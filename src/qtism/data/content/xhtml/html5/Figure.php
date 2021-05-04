@@ -31,10 +31,8 @@ use qtism\data\content\FlowTrait;
 /**
  * The XHTML figure class.
  */
-class Figure extends Html5Element implements FlowStatic
+class Figure extends Html5LayoutElement
 {
-    use FlowTrait;
-
     /**
      * The optional figure caption. When set, FigCaption is unique.
      *
@@ -42,35 +40,6 @@ class Figure extends Html5Element implements FlowStatic
      * @qtism-bean-property
      */
     private $figCaption;
-
-    /**
-     * The Flow objects composing the Figure.
-     *
-     * @var FlowCollection A collection of Flow objects.
-     * @qtism-bean-property
-     */
-    private $content;
-
-    /**
-     * @param string|null $title A title in the sense of Html title attribute
-     * @param int|null $role A role taken in the Role constants.
-     * @param string|null $id The id of the bodyElement.
-     * @param string|null $class The class of the bodyElement.
-     * @param string|null $lang The language of the bodyElement.
-     * @param string|null $label The label of the bodyElement.
-     * @throws InvalidArgumentException If one of the arguments is invalid.
-     */
-    public function __construct(
-        $title = null,
-        $role = null,
-        $id = null,
-        $class = null,
-        $lang = null,
-        $label = null
-    ) {
-        parent::__construct($title, $role, $id, $class, $lang, $label);
-        $this->setContent(new FlowCollection());
-    }
 
     public function setFigCaption(?FigCaption $figCaption): void
     {
@@ -106,11 +75,6 @@ class Figure extends Html5Element implements FlowStatic
         }
 
         $this->content = $internalContent;
-    }
-
-    public function getContent(): FlowCollection
-    {
-        return $this->content;
     }
 
     public function getQtiClassName(): string
