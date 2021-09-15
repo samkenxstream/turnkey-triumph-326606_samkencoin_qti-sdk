@@ -162,7 +162,7 @@ class ResponseValidityConstraint extends QtiComponent
             throw new InvalidArgumentException(
                 "The 'maxConstraint' argument must be a non negative (>= 0) integer."
             );
-        } elseif ($maxConstraint !== 0 && $maxConstraint < ($minConstraint = $this->getMinConstraint())) {
+        } elseif ($maxConstraint !== 0 && $maxConstraint < $this->getMinConstraint()) {
             throw new InvalidArgumentException(
                 "The 'maxConstraint' argument must be greather or equal to than the 'minConstraint' in place."
             );

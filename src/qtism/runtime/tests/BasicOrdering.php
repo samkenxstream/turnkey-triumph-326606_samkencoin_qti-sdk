@@ -35,7 +35,6 @@ class BasicOrdering extends AbstractOrdering
     {
         if (($ordering = $this->getAssessmentSection()->getOrdering()) !== null && $ordering->getShuffle() === true) {
             // $orderedRoutes will contain the result of the ordering algorithm.
-            $orderedRoutes = new SelectableRoute();
             $selectableRoutes = $this->getSelectableRoutes();
             $selectableRoutesCount = count($selectableRoutes);
 

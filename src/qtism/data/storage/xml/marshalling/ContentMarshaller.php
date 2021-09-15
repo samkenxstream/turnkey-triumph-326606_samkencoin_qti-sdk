@@ -247,28 +247,36 @@ abstract class ContentMarshaller extends RecursiveMarshaller
         } elseif ($component instanceof SimpleAssociableChoice) {
             return $component->getContent()->getArrayCopy();
         } elseif ($component instanceof SimpleMatchSet) {
+            //1
             return $component->getSimpleAssociableChoices()->getArrayCopy();
         } elseif ($component instanceof GapText) {
             return $component->getContent()->getArrayCopy();
         } elseif ($component instanceof GapImg) {
+            //2
             return [$component->getObject()];
         } elseif ($component instanceof ChoiceInteraction) {
+            //3
             return $component->getSimpleChoices()->getArrayCopy();
         } elseif ($component instanceof OrderInteraction) {
+            //4
             return $component->getSimpleChoices()->getArrayCopy();
         } elseif ($component instanceof AssociateInteraction) {
+            //5
             return $component->getSimpleAssociableChoices()->getArrayCopy();
         } elseif ($component instanceof GapMatchInteraction) {
             return $component->getContent()->getArrayCopy();
         } elseif ($component instanceof InlineChoiceInteraction) {
             return $component->getContent()->getArrayCopy();
         } elseif ($component instanceof HotspotInteraction) {
+            //6
             return $component->getHotspotChoices()->getArrayCopy();
         } elseif ($component instanceof GraphicAssociateInteraction) {
+            //7
             return $component->getAssociableHotspots()->getArrayCopy();
         } elseif ($component instanceof InlineChoice) {
             return $component->getContent()->getArrayCopy();
         } elseif ($component instanceof MatchInteraction) {
+            //8
             return $component->getSimpleMatchSets()->getArrayCopy();
         } elseif ($component instanceof Prompt) {
             return $component->getContent()->getArrayCopy();
@@ -283,6 +291,7 @@ abstract class ContentMarshaller extends RecursiveMarshaller
         } elseif ($component instanceof HottextInteraction) {
             return $component->getContent()->getArrayCopy();
         } elseif ($component instanceof GraphicOrderInteraction) {
+            //9
             return $component->getHotspotChoices()->getArrayCopy();
         } elseif ($component instanceof ModalFeedback) {
             return $component->getContent()->getArrayCopy();

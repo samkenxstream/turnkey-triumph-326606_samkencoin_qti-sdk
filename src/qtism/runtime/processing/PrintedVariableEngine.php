@@ -195,7 +195,6 @@ class PrintedVariableEngine extends AbstractEngine
     private function processRecord(Variable $variable)
     {
         $processedValues = [];
-        $baseType = $variable->getBaseType();
         $mappingIndicator = $this->getComponent()->getMappingIndicator();
 
         foreach ($variable->getValue() as $k => $v) {

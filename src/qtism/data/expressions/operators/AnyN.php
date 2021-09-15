@@ -24,6 +24,7 @@
 namespace qtism\data\expressions\operators;
 
 use InvalidArgumentException;
+use qtism\common\enums\BaseType;
 use qtism\common\enums\Cardinality;
 use qtism\common\utils\Format;
 use qtism\data\expressions\ExpressionCollection;
@@ -75,7 +76,7 @@ class AnyN extends Operator
      */
     public function __construct(ExpressionCollection $expressions, $min, $max)
     {
-        parent::__construct($expressions, 1, -1, [Cardinality::SINGLE], [OperatorBaseType::BOOLEAN]);
+        parent::__construct($expressions, 1, -1, [Cardinality::SINGLE], [BaseType::BOOLEAN]);
         $this->setMin($min);
         $this->setMax($max);
     }

@@ -102,9 +102,6 @@ class PhpQtiDatatypeMarshaller extends PhpMarshaller
         $coords = $this->getToMarshall();
         $array = $coords->getArrayCopy();
 
-        // Retrieve the shape.
-        $shape = $coords->getShape();
-
         // -- Actual marshalling.
         $ctx = $this->getContext();
         $access = $ctx->getStreamAccess();

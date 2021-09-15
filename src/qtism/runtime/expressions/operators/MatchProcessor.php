@@ -52,7 +52,6 @@ class MatchProcessor extends OperatorProcessor
     public function process()
     {
         $operands = $this->getOperands();
-        $expression = $this->getExpression();
 
         if ($operands->containsNull() === true) {
             return null;
@@ -67,9 +66,6 @@ class MatchProcessor extends OperatorProcessor
             $msg = 'The Match Expression only accepts operands with the same baseType.';
             throw new OperatorProcessingException($msg, $this, OperatorProcessingException::WRONG_BASETYPE);
         }
-
-        $firstOperand = $operands[0];
-        $secondOperand = $operands[1];
 
         if ($operands[0] instanceof Comparable) {
             // 2 containers to compare.

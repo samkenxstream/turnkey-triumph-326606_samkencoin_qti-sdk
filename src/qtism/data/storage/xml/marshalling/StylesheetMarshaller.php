@@ -46,6 +46,7 @@ class StylesheetMarshaller extends Marshaller
         $this->setDOMElementAttribute($element, 'media', $component->getMedia());
         $this->setDOMElementAttribute($element, 'type', $component->getType());
 
+        //todo modify - bad condition
         if (($title = $component->getTitle()) != '') {
             $this->setDOMElementAttribute($element, 'title', $component->getTitle());
         }

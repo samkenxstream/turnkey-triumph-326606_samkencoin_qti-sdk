@@ -209,8 +209,6 @@ class State extends AbstractCollection
         $data = $this->getDataPlaceHolder();
 
         foreach ($data as $variable) {
-            $value = $variable->getValue();
-
             if ($variable->isNull() === false) {
                 return false;
             }

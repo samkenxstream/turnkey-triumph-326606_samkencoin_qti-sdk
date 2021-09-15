@@ -226,6 +226,7 @@ class FileSystemFile implements QtiFile
                     throw new RuntimeException($msg);
                 }
 
+                //todo check this
                 if ((is_dir($pathinfo['dirname']) === false) && ($mkdir = @mkdir($pathinfo['dirname'], '0770', true)) === false) {
                     $msg = "Unable to create destination directory at '" . $pathinfo['dirname'] . "'.";
                     throw new RuntimeException($msg);

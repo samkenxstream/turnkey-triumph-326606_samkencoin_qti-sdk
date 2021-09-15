@@ -25,7 +25,6 @@ namespace qtism\runtime\rendering\qtipl\expressions;
 
 use qtism\common\enums\BaseType;
 use qtism\runtime\rendering\qtipl\AbstractQtiPLRenderer;
-use qtism\runtime\rendering\RenderingException;
 
 /**
  * The BaseValue's QtiPLRenderer. Transforms the BaseValue's

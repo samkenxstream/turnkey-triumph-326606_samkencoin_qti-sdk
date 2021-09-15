@@ -2,7 +2,6 @@
 
 namespace qti\customOperators;
 
-use qtism\common\enums\BaseType;
 use qtism\common\datatypes\QtiString;
 use qtism\runtime\expressions\operators\CustomOperatorProcessor;
 

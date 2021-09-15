@@ -25,6 +25,7 @@ namespace qtism\common\storage;
 
 use DateTime;
 use DateTimeZone;
+use Exception;
 
 /**
  * The BinaryStreamAccess aims at providing the needed methods to
@@ -54,7 +55,7 @@ class BinaryStreamAccess extends AbstractStreamAccess
      * @return int
      * @throws BinaryStreamAccessException
      */
-    public function readTinyInt()
+    public function readTinyInt() :?string
     {
         try {
             $bin = $this->getStream()->read(1);
@@ -63,6 +64,8 @@ class BinaryStreamAccess extends AbstractStreamAccess
         } catch (StreamException $e) {
             $this->handleBinaryStreamException($e, BinaryStreamAccessException::TINYINT);
         }
+
+        return null;
     }
 
     /**
@@ -187,7 +190,7 @@ class BinaryStreamAccess extends AbstractStreamAccess
         try {
             $int = ord($this->getStream()->read(1));
 
-            return ($int === 0) ? false : true;
+            return !(($int === 0));
         } catch (StreamException $e) {
             $this->handleBinaryStreamException($e, BinaryStreamAccessException::BOOLEAN);
         }
@@ -278,6 +281,7 @@ class BinaryStreamAccess extends AbstractStreamAccess
      *
      * @return DateTime A DateTime object.
      * @throws BinaryStreamAccessException
+     * @throws Exception
      */
     public function readDateTime()
     {
@@ -358,19 +362,16 @@ class BinaryStreamAccess extends AbstractStreamAccess
         switch ($e->getCode()) {
             case StreamException::NOT_OPEN:
                 $strAction = ucfirst($strAction);
-                $msg = "${strAction} a ${strType} from a closed binary stream is not permitted.";
+                $msg = $strAction . ' a ' . $strType . ' from a closed binary stream is not permitted.';
                 throw new BinaryStreamAccessException($msg, $this, BinaryStreamAccessException::NOT_OPEN, $e);
-                break;
 
             case StreamException::READ:
-                $msg = "An error occurred while ${strAction} a ${strType}.";
+                $msg = 'An error occurred while ' . $strAction .  ' a ' . $strType . '.';
                 throw new BinaryStreamAccessException($msg, $this, $typeError, $e);
-                break;
 
             default:
-                $msg = "An unknown error occurred while ${strAction} a ${strType}.";
+                $msg = 'An unknown error occurred while ' . $strAction . ' a ' . $strType . '.';
                 throw new BinaryStreamAccessException($msg, $this, BinaryStreamAccessException::UNKNOWN, $e);
-                break;
         }
     }
 }

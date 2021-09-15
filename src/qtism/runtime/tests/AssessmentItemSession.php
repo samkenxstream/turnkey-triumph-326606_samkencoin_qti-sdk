@@ -764,9 +764,6 @@ class AssessmentItemSession extends State
      */
     public function endAttempt(State $responses = null, $responseProcessing = true, $forceLateSubmission = false)
     {
-        // Flag to indicate if time is exceed or not.
-        $maxTimeExceeded = false;
-
         if (($this->getState() === AssessmentItemSessionState::CLOSED) && $this->isMaxTimeReached() === true && ($this->getTimeLimits()->doesAllowLateSubmission() === false && $forceLateSubmission === false)) {
             $msg = 'The maximum time to be spent on the item session has been reached.';
             throw new AssessmentItemSessionException($msg, $this, AssessmentItemSessionException::DURATION_OVERFLOW);

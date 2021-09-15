@@ -35,6 +35,7 @@ use qtism\data\storage\xml\QtiNamespaced;
  */
 abstract class Html5Element extends BodyElement implements QtiNamespaced
 {
+    //todo check if we can change to https
     private const HTML5_NAMESPACE = 'http://www.imsglobal.org/xsd/imsqtiv2p2_html5_v1p0';
 
     /**

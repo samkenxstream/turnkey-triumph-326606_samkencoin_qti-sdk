@@ -136,13 +136,6 @@ class CssScoper implements Renderable
     private $output = '';
 
     /**
-     * The previous state.
-     *
-     * @var int
-     */
-    private $previousState = false;
-
-    /**
      * Whether or not map QTI classes to their qti-X CSS classes.
      *
      * @var bool

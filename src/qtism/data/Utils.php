@@ -43,7 +43,7 @@ class Utils
     {
         $sectparent = null;
 
-        foreach ($sections as $key => $sect) {
+        foreach ($sections as $sect) {
             if (in_array($component, $sect->getSectionParts()->getArrayCopy())) {
                 $sectparent = $sect;
             }
@@ -96,7 +96,7 @@ class Utils
                             $nextSectpart = null;
                             $currentFound = false;
 
-                            foreach ($sectparent->getSectionParts() as $key => $scpt) {
+                            foreach ($sectparent->getSectionParts() as $scpt) {
                                 if ($currentFound) {
                                     $nextSectpart = $scpt;
                                     break;
@@ -211,7 +211,7 @@ class Utils
                         if ($sectparent != null) {
                             $prevSectPart = null;
 
-                            foreach ($sectparent->getSectionParts() as $key => $scpt) {
+                            foreach ($sectparent->getSectionParts() as $scpt) {
                                 if ($scpt == $currentCmp) {
                                     break;
                                 }
@@ -227,7 +227,7 @@ class Utils
                         } else {
                             // No recursion
                             $prevSect = null;
-                            $keyFound = null;
+                            $keyFound = null;//todo check why is this here
 
                             foreach ($sections as $sect) {
                                 if ($sect->getIdentifier() == $currentCmp->getIdentifier()) {
@@ -252,10 +252,10 @@ class Utils
                     $items = $currentCmp->getComponentsByClassName('assessmentItemRef')->getArrayCopy();
 
                     if (count($items) == 0) {
-                        // First item of the next testpart
+                        // First item of the next test part
 
                         $prevTest = null;
-                        $keyFound = null;
+                        $keyFound = null; //todo check why this is here
 
                         foreach ($test->getComponentsByClassName($currentCmp->getQtiClassName()) as $test) {
                             if ($test->getIdentifier() == $currentCmp->getIdentifier()) {

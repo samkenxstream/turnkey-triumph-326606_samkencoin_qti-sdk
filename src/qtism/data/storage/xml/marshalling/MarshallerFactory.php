@@ -25,7 +25,6 @@ namespace qtism\data\storage\xml\marshalling;
 
 use DOMElement;
 use InvalidArgumentException;
-use qtism\data\ExternalQtiComponent;
 use qtism\data\QtiComponent;
 use qtism\data\storage\xml\QtiNamespaced;
 use qtism\data\storage\xml\Utils;

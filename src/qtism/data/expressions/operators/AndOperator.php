@@ -23,6 +23,7 @@
 
 namespace qtism\data\expressions\operators;
 
+use qtism\common\enums\BaseType;
 use qtism\common\enums\Cardinality;
 use qtism\data\expressions\ExpressionCollection;
 
@@ -48,7 +49,7 @@ class AndOperator extends Operator
      */
     public function __construct(ExpressionCollection $expressions)
     {
-        parent::__construct($expressions, 1, -1, [Cardinality::SINGLE], [OperatorBaseType::BOOLEAN]);
+        parent::__construct($expressions, 1, -1, [Cardinality::SINGLE], [BaseType::BOOLEAN]);
     }
 
     /**

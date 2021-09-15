@@ -233,8 +233,6 @@ class ExpressionEngine extends AbstractEngine
                 $result = $processor->process();
 
                 // trace the processing of the operator.
-                $qtiName = $expression->getQtiClassName();
-                $trace = "Operator '${qtiName}' processed.";
                 $this->traceOperator($processor, $result);
 
                 if ($expression !== $this->getComponent()) {
@@ -249,8 +247,6 @@ class ExpressionEngine extends AbstractEngine
                 $this->operands->push($result);
 
                 // trace the processing of the expression.
-                $qtiName = $expression->getQtiClassName();
-                $trace = "Expression '${qtiName}' processed.";
                 $this->traceExpression($processor, $result);
             }
         }

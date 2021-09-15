@@ -30,6 +30,7 @@ use qtism\data\storage\xml\marshalling\Compact21MarshallerFactory;
  */
 class CompactVersion21 extends CompactVersion
 {
+    //todo check if this can be converted to https
     const XMLNS = 'http://www.imsglobal.org/xsd/imsqti_v2p1';
 
     const XSD = 'http://www.taotesting.com/xsd/qticompact_v2p1.xsd';

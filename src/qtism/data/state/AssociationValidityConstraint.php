@@ -148,6 +148,7 @@ class AssociationValidityConstraint extends QtiComponent
             throw new InvalidArgumentException(
                 "The 'maxConstraint' argument must be a non negative (>= 0) integer."
             );
+            //todo fix this
         } elseif ($maxConstraint !== 0 && $maxConstraint < ($minConstraint = $this->getMinConstraint())) {
             throw new InvalidArgumentException(
                 "The 'maxConstraint' argument must be greather or equal to than the 'minConstraint' in place."

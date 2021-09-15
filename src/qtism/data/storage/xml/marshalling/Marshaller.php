@@ -731,7 +731,7 @@ abstract class Marshaller
                     $element->setAttribute('aria-label', $ariaLabel);
                 }
 
-                if (($ariaHidden = $bodyElement->getAriaHidden()) !== false) {
+                if ($bodyElement->getAriaHidden() !== false) {
                     $element->setAttribute('aria-hidden', 'true');
                 }
             }

@@ -4,7 +4,6 @@ namespace qti\customOperators;
 
 use qtism\common\enums\BaseType;
 use qtism\runtime\common\OrderedContainer;
-use qtism\runtime\expressions\operators\CustomOperatorProcessor;
 
 class CsvToOrdered extends CsvToContainer
 {

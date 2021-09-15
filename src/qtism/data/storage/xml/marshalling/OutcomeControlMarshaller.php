@@ -60,6 +60,7 @@ class OutcomeControlMarshaller extends RecursiveMarshaller
             $marshaller = $this->getMarshallerFactory()->createMarshaller($expressionElts[0]);
             $expression = $marshaller->unmarshall($expressionElts[0]);
         } elseif (($element->localName == 'outcomeIf' || $element->localName == 'outcomeElseIf') && count($expressionElts) == 0) {
+            //todo validate removal for count($expressionElts) == 0
             $msg = "An '" . $element->localName . "' must contain an 'expression' element. None found at line " . $element->getLineNo() . "'.";
             throw new UnmarshallingException($msg, $element);
         }

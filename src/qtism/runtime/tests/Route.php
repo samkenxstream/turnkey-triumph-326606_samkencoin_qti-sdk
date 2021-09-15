@@ -1029,7 +1029,6 @@ class Route implements Iterator
             return new RouteItemCollection($map[$assessmentSection]);
         } elseif ($assessmentSection instanceof AssessmentSection) {
             $map = $this->getAssessmentSectionMap();
-            $routeItems = new RouteItemCollection();
 
             if (isset($map[$assessmentSection]) === false) {
                 $msg = "The assessmentSection '" . $assessmentSection->getIdentifier() . "' is not referenced in the Route.";

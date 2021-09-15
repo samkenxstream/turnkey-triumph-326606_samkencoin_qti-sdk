@@ -25,7 +25,6 @@ namespace qtism\runtime\rendering\markup;
 
 use qtism\runtime\rendering\Renderable;
 use qtism\runtime\rendering\RenderingException;
-use qtism\runtime\rendering\markup\Utils;
 
 /**
  * Class MarkupPostRenderer

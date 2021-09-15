@@ -33,6 +33,7 @@ use ValueError;
  */
 class Format
 {
+    //todo why this privete static variables are here as they are not used :(
     /**
      * Perl XML Ideographic regular expression.
      *

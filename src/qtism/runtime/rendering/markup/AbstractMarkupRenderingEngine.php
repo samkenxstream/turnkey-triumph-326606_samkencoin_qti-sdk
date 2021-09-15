@@ -692,7 +692,6 @@ abstract class AbstractMarkupRenderingEngine implements Renderable
     {
         $variableIdentifier = ($component instanceof FeedbackElement || $component instanceof ModalFeedback) ? $component->getOutcomeIdentifier() : $component->getTemplateIdentifier();
         $identifier = new QtiIdentifier($component->getIdentifier());
-        $showHide = $component->getShowHide();
         $state = $this->getState();
 
         $matches = false;
@@ -1071,7 +1070,6 @@ abstract class AbstractMarkupRenderingEngine implements Renderable
         $val = '$' . $this->getStateName() . "['" . $component->getOutcomeIdentifier() . "']";
         $identifier = $component->getIdentifier();
         $identifierType = QtiIdentifier::class;
-        $scalarType = QtiScalar::class;
         $containerType = Container::class;
         $scalarCheck = "${val} instanceof ${identifierType} && ${val}->equals(new ${identifierType}('${identifier}'))";
         $containerCheck = "${val} instanceof ${containerType} && ${val}->contains(new ${identifierType}('${identifier}'))";
@@ -1138,7 +1136,6 @@ abstract class AbstractMarkupRenderingEngine implements Renderable
         $val = '$' . $this->getStateName() . "['" . $component->getTemplateIdentifier() . "']";
         $identifier = $component->getIdentifier();
         $identifierType = QtiIdentifier::class;
-        $scalarType = QtiScalar::class;
         $containerType = Container::class;
         $scalarCheck = "${val} instanceof ${identifierType} && ${val}->equals(new ${identifierType}('${identifier}'))";
         $containerCheck = "${val} instanceof ${containerType} && ${val}->contains(new ${identifierType}('${identifier}'))";

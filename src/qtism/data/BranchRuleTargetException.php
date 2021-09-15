@@ -53,13 +53,6 @@ class BranchRuleTargetException extends Exception
     const BACKWARD_BRANCHING = 2;
 
     /**
-     * @var QtiComponent The AssessmentTest, AssessmentSection or Assessment ItemRef whose BranchRule caused
-     * this Exception.
-     */
-
-    private $source;
-
-    /**
      * BranchRuleTargetException object.
      *
      * @param string $message A human-readable message.

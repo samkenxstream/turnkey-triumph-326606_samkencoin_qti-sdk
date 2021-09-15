@@ -28,7 +28,6 @@ use qtism\data\content\Stylesheet;
 use qtism\data\QtiComponent;
 use qtism\runtime\rendering\markup\AbstractMarkupRenderer;
 use qtism\runtime\rendering\markup\AbstractMarkupRenderingEngine;
-use qtism\runtime\rendering\RenderingException;
 
 /**
  * Base class of all XHTML renderers.

@@ -230,9 +230,7 @@ class Render extends Cli
     private function runGoldilocks(XmlDocument $doc, GoldilocksRenderingEngine $renderer)
     {
         $arguments = $this->getArguments();
-        $profile = $arguments['flavour'];
-
-        $xml = $renderer->render($doc->getDocumentComponent());
+        $xml = $this->getXml($renderer, $doc);
 
         $header = '';
         $footer = '';
@@ -320,7 +318,7 @@ class Render extends Cli
         $arguments = $this->getArguments();
         $profile = $arguments['flavour'];
 
-        $xml = $renderer->render($doc->getDocumentComponent());
+        $xml = $this->getXml($renderer, $doc);
 
         $header = '';
         $footer = '';
@@ -416,5 +414,16 @@ class Render extends Cli
         }
 
         return $engine;
+    }
+
+    /**
+     * @param GoldilocksRenderingEngine $renderer
+     * @param XmlDocument $doc
+     * @return \DOMDocument|mixed
+     * @throws RenderingException
+     */
+    private function getXml(GoldilocksRenderingEngine $renderer, XmlDocument $doc)
+    {
+        return $renderer->render($doc->getDocumentComponent());
     }
 }

@@ -47,7 +47,6 @@ class IsNullProcessor extends OperatorProcessor
     public function process()
     {
         $operands = $this->getOperands();
-        $expression = $this->getExpression();
 
         return new QtiBoolean($operands->containsNull());
     }

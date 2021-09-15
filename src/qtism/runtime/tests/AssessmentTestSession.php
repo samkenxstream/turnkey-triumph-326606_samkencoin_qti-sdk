@@ -319,7 +319,7 @@ class AssessmentTestSession extends State
                             foreach ($routeItemsToClose as $routeItem) {
                                 $itemRef = $routeItem->getAssessmentItemRef();
                                 $occurence = $routeItem->getOccurence();
-                                $session = $this->getItemSession($itemRef, $occurence)->endItemSession();
+                                $this->getItemSession($itemRef, $occurence)->endItemSession();
                             }
 
                             break;
@@ -1945,7 +1945,6 @@ class AssessmentTestSession extends State
                 // prefix given.
 
                 // - prefix targets an item ?
-                $store = $this->getAssessmentItemSessionStore();
                 $items = $this->getAssessmentItemRefs();
                 $sequence = ($v->hasSequenceNumber() === true) ? $v->getSequenceNumber() - 1 : 0;
                 $prefix = $v->getPrefix();
@@ -2210,9 +2209,6 @@ class AssessmentTestSession extends State
      */
     protected function addItemSession(AssessmentItemSession $session, $occurence = 0)
     {
-        $assessmentItemRefs = $this->getAssessmentItemRefs();
-        $sessionAssessmentItemRefIdentifier = $session->getAssessmentItem()->getIdentifier();
-
         if ($this->getAssessmentItemRefs()->contains($session->getAssessmentItem()) === false) {
             // The session that is requested to be set is bound to an item
             // which is not referenced in the test. This is a pure logic error.
@@ -2755,7 +2751,7 @@ class AssessmentTestSession extends State
                     break;
 
                 case AssessmentItemSessionException::RUNTIME_ERROR:
-                    $sessionIdentifier = $this->buildCurrentItemSessionIdentifier();
+                    $this->buildCurrentItemSessionIdentifier();
                     $msg = 'A runtime error occurred at the AssessmentItemSession level.';
                     $code = AssessmentTestSessionException::UNKNOWN;
                     break;
@@ -2959,7 +2955,6 @@ class AssessmentTestSession extends State
      */
     public function isTestPartVisited($testPart)
     {
-        $visited = false;
         $visitedTestPartIdentifiers = $this->getVisitedTestPartIdentifiers();
 
         if ($testPart instanceof TestPart) {

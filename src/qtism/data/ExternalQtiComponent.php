@@ -76,7 +76,7 @@ class ExternalQtiComponent extends QtiComponent implements IExternal, QtiNamespa
                 throw new RuntimeException($msg);
             }
 
-            if (($targetNamespace = $this->getTargetNamespace()) !== '' && $xml->documentElement->namespaceURI !== $this->getTargetNamespace()) {
+            if ($this->getTargetNamespace() !== '' && $xml->documentElement->namespaceURI !== $this->getTargetNamespace()) {
                 $msg = "The XML content' " . $this->getXmlString() . "' of the '" . $this->getQtiClassName() . "' external component is not referenced into target namespace '" . $this->getTargetNamespace() . "'.";
                 throw new RuntimeException($msg);
             }
