@@ -134,7 +134,7 @@ use qtism\runtime\tests\Utils as TestUtils;
  *
  * @see http://www.imsglobal.org/question/qtiv2p1/imsqti_infov2p1.html#section10055 The IMS QTI 2.1 Item Session Lifecycle.
  */
-class AssessmentItemSession extends State
+class AssessmentItemSession extends State implements SessionInterface
 {
     /**
      * The item completion status 'incomplete'.
@@ -163,6 +163,11 @@ class AssessmentItemSession extends State
      * @var string
      */
     const COMPLETION_STATUS_COMPLETED = 'completed';
+
+    /**
+     * @var string
+     */
+    private $sessionId = null;
 
     /**
      * A timing reference used to compute the duration of the session.
@@ -266,6 +271,9 @@ class AssessmentItemSession extends State
         $this->setSubmissionMode($submissionMode);
         $this->setAutoTemplateProcessing($autoTemplateProcessing);
 
+        // At this time, no session ID.
+        $this->setSessionId('no_session_id');
+
         // -- Create the built-in response variables.
         $this->setVariable(new ResponseVariable('numAttempts', Cardinality::SINGLE, BaseType::INTEGER, new QtiInteger(0)));
         $this->setVariable(new ResponseVariable('duration', Cardinality::SINGLE, BaseType::DURATION, new QtiDuration('PT0S')));
@@ -295,6 +303,31 @@ class AssessmentItemSession extends State
             $shufflingStates[] = $shuffling->shuffle();
         }
         $this->setShufflingStates($shufflingStates);
+    }
+
+    /**
+     * Set the unique session ID for this AssessmentTestSession.
+     *
+     * @param string $sessionId A unique ID.
+     * @throws InvalidArgumentException If $sessionId is not a string or is empty.
+     */
+    public function setSessionId(string $sessionId)
+    {
+        if (empty($sessionId)) {
+            throw new InvalidArgumentException("The 'sessionId' argument must be a non-empty string.");
+        }
+
+        $this->sessionId = $sessionId;
+    }
+
+    /**
+     * Get the unique session ID for this AssessmentTestSession.
+     *
+     * @return string A unique ID.
+     */
+    public function getSessionId(): string
+    {
+        return $this->sessionId;
     }
 
     /**

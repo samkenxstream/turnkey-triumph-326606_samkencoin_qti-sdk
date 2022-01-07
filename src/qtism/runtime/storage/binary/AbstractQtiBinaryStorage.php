@@ -114,7 +114,7 @@ abstract class AbstractQtiBinaryStorage extends AbstractStorage
     {
         // If not provided, generate a session ID.
         if (empty($sessionId)) {
-            $sessionId = uniqid('qtism', true);
+            $sessionId = uniqid('qtismtest', true);
         }
 
         try {
@@ -294,7 +294,14 @@ abstract class AbstractQtiBinaryStorage extends AbstractStorage
 
                 // An already instantiated session for this route item?
                 if ($access->readBoolean() === true) {
-                    $itemSession = $access->readAssessmentItemSession($this->getManager(), $seeker, $this->version);
+                    $itemSessionId = $access->readString();
+
+                    $streamForItem = $this->getRetrievalStream($itemSessionId);
+                    $streamForItem->open();
+                    $itemStreamAccess = $this->createBinaryStreamAccess($stream);
+
+                    // $itemStreamAccess->readAssessmentItemSession($this->getManager(), $seeker, $this->version)
+                    $itemSession = new ItemSessionLazyLoadingProxy($itemSessionId, $this);
 
                     // last-update
                     if ($access->readBoolean() === true) {

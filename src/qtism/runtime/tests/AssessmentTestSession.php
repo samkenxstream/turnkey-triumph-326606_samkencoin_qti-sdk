@@ -66,7 +66,7 @@ use UnexpectedValueException;
 /**
  * The AssessmentTestSession class represents a candidate session for a given AssessmentTest.
  */
-class AssessmentTestSession extends State
+class AssessmentTestSession extends State implements SessionInterface
 {
     const ROUTECOUNT_ALL = 0;
 
@@ -370,19 +370,13 @@ class AssessmentTestSession extends State
      * @param string $sessionId A unique ID.
      * @throws InvalidArgumentException If $sessionId is not a string or is empty.
      */
-    public function setSessionId($sessionId)
+    public function setSessionId(string $sessionId)
     {
-        if (is_string($sessionId)) {
-            if (empty($sessionId) === false) {
-                $this->sessionId = $sessionId;
-            } else {
-                $msg = "The 'sessionId' argument must be a non-empty string.";
-                throw new InvalidArgumentException($msg);
-            }
-        } else {
-            $msg = "The 'sessionId' argument must be a string, '" . gettype($sessionId) . "' given.";
-            throw new InvalidArgumentException($msg);
+        if (empty($sessionId)) {
+            throw new InvalidArgumentException("The 'sessionId' argument must be a non-empty string.");
         }
+
+        $this->sessionId = $sessionId;
     }
 
     /**
@@ -390,7 +384,7 @@ class AssessmentTestSession extends State
      *
      * @return string A unique ID.
      */
-    public function getSessionId()
+    public function getSessionId(): string
     {
         return $this->sessionId;
     }
